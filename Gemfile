@@ -53,3 +53,5 @@ gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 ### ログイン機能
 gem 'devise'
+### ダミーデータの作成
+gem 'faker'
