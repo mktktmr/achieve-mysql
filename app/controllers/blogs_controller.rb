@@ -17,6 +17,8 @@ class BlogsController < ApplicationController
   def create
     #if Blog.create(blog_params)
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
+    binding.pry
     if @blog.save
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
