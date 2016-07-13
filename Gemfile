@@ -55,3 +55,5 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 ### ダミーデータの作成
 gem 'faker'
+### ブラウザからメールの受信を確認できるようにする
+gem 'letter_opener', group: :development
