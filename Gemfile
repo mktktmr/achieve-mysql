@@ -49,5 +49,5 @@ gem 'pry-rails', '0.3.4'
 gem 'twitter-bootstrap-rails'
 ### 
 gem 'jquery-turbolinks'
-
-
+### Heroku上でのロギングに必要
+gem 'rails_12factor', group: :production
