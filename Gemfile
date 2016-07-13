@@ -49,3 +49,5 @@ gem 'pry-rails', '0.3.4'
 gem 'twitter-bootstrap-rails'
 ### 
 gem 'jquery-turbolinks'
+
+
