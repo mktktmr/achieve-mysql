@@ -2,5 +2,6 @@
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
     <h2>ブログを編集する</h2>
     <%= render 'form' %>
+    <p class="text-right">written by <%= @blog.user.name %></p>
   </div>
 </div>
