@@ -41,7 +41,6 @@ class BlogsController < ApplicationController
   def destroy
     @blog.destroy
     redirect_to blogs_path, notice: "ブログを削除しました！"
-      NoticeMailer.sendmail_blog(@blog).deliver
   end
 
   private
