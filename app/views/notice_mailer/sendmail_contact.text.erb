@@ -1,3 +1,4 @@
-NoticeMailer#sendmail_blog
+お問い合わせいただきありがとうございます
 
-<%= @greeting %>, find me in app/views/notice_mailer/sendmail_blog.text.erb
+name: <%= @contact.name %>
+content: <%= simple_format @contact.content %>

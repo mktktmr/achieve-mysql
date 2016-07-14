@@ -1,3 +1,6 @@
-NoticeMailer#sendmail_blog
+Achieveに新しくブログが投稿されました！
 
-<%= @greeting %>, find me in app/views/notice_mailer/sendmail_blog.text.erb
+title: <%= @blog.title %>
+content: <%= @blog.content %>
+
+<%= link_to '投稿されたブログはこちら', blogs_path(@blog) %>
