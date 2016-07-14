@@ -1,15 +1,5 @@
 <%= form_for @blog, url: choose_new_or_edit do |f| %>
-  <% if @blog.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-
-      <ul>
-      <% @blog.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.error_messages! %>
 
   <%= f.label 'タイトル' %>
   <%= f.text_field :title, class: 'form-control' %>
