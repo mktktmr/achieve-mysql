@@ -55,9 +55,16 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 ### ダミーデータの作成
 gem 'faker'
-### ブラウザからメールの受信を確認できるようにする
-gem 'letter_opener', group: :development
 ### 管理画面作成
 gem 'rails_admin'
 ### 権限管理
 gem 'cancan'
+
+group :development, :test do
+  ### ブラウザからメールの受信を確認できるようにする
+  gem 'letter_opener'
+  ### エラーの可視化
+  gem 'better_errors'
+  ### ステップ実行などのデバッグ
+  gem 'pry-byebug'
+end

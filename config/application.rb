@@ -24,6 +24,6 @@ module Achieve
     config.active_record.raise_in_transactional_callbacks =true
 
     ### バリデーションエラー時のレイアウトの崩れ防止
-    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
+    config.action_view.field_error_proc = proc { |html_tag, _| html_tag }
   end
 end

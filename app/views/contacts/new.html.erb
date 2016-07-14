@@ -3,16 +3,8 @@
 
     <h1>お問い合わせフォーム</h1>
     <%= form_for @contact, url: confirm_contacts_path, method: :post do |f| %>
-      <% if @contact.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
-        <ul>
-        <% @contact.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-        </div>
-      <% end %>
+      <%= f.error_messages! %>
+
       <%= f.label :name  %>
       <%= f.text_field :name, class: 'form-control' %>
       <br>
