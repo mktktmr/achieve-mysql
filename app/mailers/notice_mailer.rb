@@ -10,8 +10,6 @@ class NoticeMailer < ApplicationMailer
 
     mail to: blog.user.email,
          subject: '【Achieve】ブログが投稿されました'
-
-    #mail to: blog.user.email
   end
 
   def sendmail_contact(contact)
@@ -19,7 +17,5 @@ class NoticeMailer < ApplicationMailer
 
     mail to: contact.email,
          subject: 'お問い合わせいただきありがとうございます'
-
-    #mail to: contact.email
   end
 end
