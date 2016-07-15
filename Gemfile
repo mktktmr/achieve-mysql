@@ -59,6 +59,10 @@ gem 'faker'
 gem 'rails_admin'
 ### 権限管理
 gem 'cancan'
+### oauth認証
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :development, :test do
   ### ブラウザからメールの受信を確認できるようにする
