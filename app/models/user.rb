@@ -23,5 +23,6 @@ class User < ActiveRecord::Base
       user.skip_confirmation!
       user.save(validate: false)
     end
+    user
   end
 end
