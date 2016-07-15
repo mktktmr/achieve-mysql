@@ -67,4 +67,6 @@ group :development, :test do
   gem 'better_errors'
   ### ステップ実行などのデバッグ
   gem 'pry-byebug'
+  ### 環境変数の設定
+  gem 'dotenv-rails'
 end
