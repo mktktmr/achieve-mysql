@@ -9,7 +9,7 @@ module ActionView
         if user.provider.blank?
           img_url = 'no_image.png'
         else
-          img_url = user.image
+          img_url = user.image_url
         end
         
         options.store(:alt, user.name)
