@@ -4,6 +4,16 @@ end
 module ActionView
   module Helpers
     module FormHelper
+
+      def profile_img(user)
+        if user.provider
+          img_url = user.image
+        else
+          img_url = 'no_image.png'
+        end
+        image_tag(img_url, alt: user.name)
+      end
+
       def error_messages!(object_name, options = {})
         resource = self.instance_variable_get("@#{object_name}")
         return '' if !resource || resource.errors.empty?
