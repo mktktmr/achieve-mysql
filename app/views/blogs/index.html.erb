@@ -5,11 +5,16 @@
       <%= link_to "ブログを作成する", new_blog_path, class: 'btn btn-default' %>
     <% @blogs.each do |blog| %>
     <div class="row">
-      <h4><strong><%= blog.title %></strong></h4>
-      <p><%= blog.content %></p>
-      <p class="text-right">written by <%= blog.user.name %></p>
-      <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
-      <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger pull-right' %>
+      <div class="col-md-8">
+        <h4><strong><%= blog.title %></strong></h4>
+        <p><%= blog.content %></p>
+      </div>
+      <div class="col-md-4">
+        <p class="text-right"><%= profile_img blog.user, { style: 'width: 80px; height: 80px' } %></p>
+        <p class="text-right">written by <%= blog.user.name %></p>
+        <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
+        <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger pull-right' %>
+      </div>
     </div>
     <% end %>
   </div>
