@@ -63,6 +63,10 @@ gem 'cancan'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+### 画像アップローダー
+gem 'carrierwave'
+### 画像のリサイズなど
+gem 'rmagick'
 
 group :development, :test do
   ### ブラウザからメールの受信を確認できるようにする
