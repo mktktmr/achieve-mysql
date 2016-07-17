@@ -7,15 +7,15 @@ module ActionView
 
       def profile_img(user, options = {})
         
-        return image_tag(user.avatar, alt: user.name) if user.avatar?
+        options.store(:alt, user.name)
+        
+        return image_tag(user.avatar, options) if user.avatar?
 
         if user.provider.blank?
           img_url = 'no_image.png'
         else
           img_url = user.image_url
         end
-        
-        options.store(:alt, user.name)
 
         image_tag(img_url, options)
       end
