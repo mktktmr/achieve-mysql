@@ -5,6 +5,12 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_messages! %>
+
+      <div class="field form-group">
+        <%= profile_img(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
     
       <div class="field form-group">
         <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'メールアドレス' %>

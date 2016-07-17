@@ -6,6 +6,9 @@ module ActionView
     module FormHelper
 
       def profile_img(user, options = {})
+        
+        return image_tag(user.avatar, alt: user.name) if user.avatar?
+
         if user.provider.blank?
           img_url = 'no_image.png'
         else
