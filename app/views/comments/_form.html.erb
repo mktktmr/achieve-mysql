@@ -1,0 +1,10 @@
+<%= form_for [comment.blog, comment], remote: true do |f| %>
+  <%#= render 'shared/error_messages', resource: comment %>
+  <%= f.hidden_field :blog_id %>
+  <div class="field">
+    <%= f.text_field :content, placeholder: "内容", class: "form-control"  %>
+  </div>
+  <div class="actions">
+    <%= f.submit '投稿', class: "btn btn-info" %>
+  </div>
+<% end %>
