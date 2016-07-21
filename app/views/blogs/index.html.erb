@@ -15,7 +15,9 @@
           <p class="text-right"><%= profile_img blog.user, { style: 'width: 80px; height: 80px' } %></p>
           <p class="text-right">written by <%= blog.user.name %></p>
           <%= link_to "編集", edit_blog_path(blog.id), class: 'btn btn-default btn-sm btn-success pull-right' %>
-          <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger pull-right' %>
+          <% if blog.user.id == current_user.id %>
+            <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger pull-right' %>
+          <% end %>
         </div>
       </div>
     <% end %>
