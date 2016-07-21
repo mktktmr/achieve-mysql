@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users, controllers: {
     registrations: :"users/registrations",
     omniauth_callbacks: :"users/omniauth_callbacks"
   }
+
   resources :blogs do
     resources :comments
     post :confirm, on: :collection
@@ -18,6 +20,10 @@ Rails.application.routes.draw do
     # 追加するアクションが一つの場合、以下でもOK
     post :confirm, on: :collection
   end
+
+  resources :users, only: [:index, :show]
+
+  resources :relationships, only: [:create, :destroy]
 
   root 'top#index'
   # The priority is based upon order of creation: first created -> highest priority.

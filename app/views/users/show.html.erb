@@ -1,0 +1,33 @@
+<div class="container">
+  <h1><%= @user.name %>さんのユーザ情報</h1>
+  <h2>最近投稿</h2>
+  <% @user.blogs.order('updated_at DESC').limit(5).each do |blog| %>
+    <ul>
+      <li style="list-style: none">
+        <a href="<%= blog_path blog.id %>"><%= blog.title %></a>
+      </li>
+    </ul>
+  <% end %>
+  <h2>followers</h2>
+  <div class="row">
+    <% @user.followers.each do |follower| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <a href="<%= user_path follower %>">
+          <%= profile_img(follower) %>
+          <%= follower.name %>
+        </a>
+      </div> 
+    <% end %>
+  </div>
+  <h2>followed</h2>
+  <div class="row">
+    <% @user.followed_users.each do |followed| %>
+      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
+        <a href="<%= user_path followed %>">
+          <%= profile_img(followed) %>
+          <%= followed.name %>
+        </a>
+      </div> 
+    <% end %>
+  </div>
+</div>
