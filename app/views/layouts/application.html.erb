@@ -28,6 +28,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "ブログ", blogs_path %></li>
+            <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
           </ul>
           <% if user_signed_in? %>
             <li><%= link_to 'マイページ', edit_user_registration_path %></li>
