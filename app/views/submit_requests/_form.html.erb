@@ -1,0 +1,13 @@
+<%= form_for([@user, @submit_request]) do |f| %>
+  <p>
+    <%= f.collection_select :task_id, @tasks, :id, :title, {}, class: "form-control title" %>
+    <%= f.collection_select :charge_id, @users, :id, :name, {}, class: "form-control" %>
+  </p>
+  <p><%= f.text_area :message, placeholder: "依頼メッセージ", size: "50*20", class:"form-control" %></p>
+  <p><%= f.hidden_field :user_id %></p>
+  <p><%= f.hidden_field :status %></p>
+  <div class="button-panel row">
+    <p><%= f.submit "依頼する", class: "button col-xs-12" %></p>
+  </div>
+<% end %>
+<%= link_to '戻る', user_submit_requests_path(current_user) %>

@@ -2,7 +2,7 @@ class SubmitRequestsController < ApplicationController
   before_action :authenticate_user!
 
   before_action :set_submit_request, only: [:show, :edit, :update, :destroy]
-  before_action :submit_params, only: [:approve, :unapprove]
+  before_action :submit_params, only: [:approve, :unapprove, :reject]
 
   def index
     @submit_requests = SubmitRequest.where(user_id: current_user.id).order(updated_at: :desc)
@@ -74,7 +74,7 @@ class SubmitRequestsController < ApplicationController
   def reject
     @submit_request.update(status: 8)
     @submit_request.task.update(status: 8, charge_id: current_user.id)
-    @submit_requests = SubmitRequest.find_by(user_id: current_user.id).order(updated_at: :desc)
+    @submit_requests = SubmitRequest.where(charge_id: current_user.id).order(updated_at: :desc)
     respond_to do |format|
       format.js { render :reaction_inbox }
     end
