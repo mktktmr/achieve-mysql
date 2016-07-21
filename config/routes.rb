@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     post :confirm, on: :collection
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :tasks
+  end
 
   resources :relationships, only: [:create, :destroy]
 
