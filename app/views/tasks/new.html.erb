@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+    <h1>New Task</h1>
+    
+    <%= render 'form' %>
+    
+    <%= link_to 'Back', user_tasks_path(@task.user_id), class: 'btn btn-default' %>
+  </div>
+</div>

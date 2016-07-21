@@ -29,6 +29,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to "ブログ", blogs_path %></li>
             <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
+<li><%= link_to "マイタスク", user_tasks_path(current_user.id) if user_signed_in? %></li>
           </ul>
           <% if user_signed_in? %>
             <li><%= link_to 'マイページ', edit_user_registration_path %></li>
