@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   has_many :tasks, dependent: :destroy
 
+  has_many :submit_requests, dependent: :destroy
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
@@ -67,5 +69,9 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
+  end
+  
+  def friend
+    followers & followed_users
   end
 end

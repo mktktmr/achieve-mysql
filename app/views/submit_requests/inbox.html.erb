@@ -1,0 +1,6 @@
+<div class="container">
+  <%= link_to '依頼一覧に戻る', user_submit_requests_path %>
+  <div class="inbox_list_<%= current_user.id %>" id="inbox_list_<%= current_user.id %>" >
+    <%= render 'submit_requests_list', submit_requests: @submit_requests %>
+  </div>
+</div>
