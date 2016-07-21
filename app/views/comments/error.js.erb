@@ -1,0 +1,7 @@
+<%
+messages = ''
+@comment.errors.full_messages.each do |msg|
+  messages = messages + msg + '\n'
+end
+%>
+alert('<%= messages %>');

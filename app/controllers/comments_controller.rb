@@ -11,7 +11,17 @@ class CommentsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { render :error }
       end
+    end
+  end
+
+  def destroy
+    @comment = Comment.find params[:id]
+    @comment.destroy
+
+    respond_to do |format|
+      format.js { render :index }
     end
   end
 
