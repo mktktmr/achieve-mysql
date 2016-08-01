@@ -67,6 +67,8 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 ### 画像のリサイズなど
 gem 'rmagick'
+### pusher
+gem 'pusher'
 
 group :development, :test do
   ### ブラウザからメールの受信を確認できるようにする

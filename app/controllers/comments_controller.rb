@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  after_action :sending_pusher, only: [:create]
+
   def create
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
+    @notification = @comment.notifications.build recipient_id: @blog.user_id, sender_id: current_user.id
 
     respond_to do |format|
       if @comment.save
@@ -29,5 +33,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:blog_id, :content)
+  end
+
+  def sending_pusher
+    Notification.sending_pusher(@notification.recipient_id)
   end
 end
