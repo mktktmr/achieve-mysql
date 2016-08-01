@@ -1,0 +1,17 @@
+<div class='notifications-index'>
+  <li>
+    <% if notifications.present? %>
+      <% notifications.each do |notification| %>
+        <% unless notification.read %>
+        <span class='label label-pill label-warning'>未読</span>
+        <small class='dropdown'>ブログ「<%= notification.comment.blog.title %>」に<%= sender_user(notification) %> さんがコメントしました。</small>
+        <p class='palette-paragraph text-right'>
+          <small class='dropdown'>
+            <i class='fa fa-clock-o'></i>&ensp;<%= posted_time(notification.created_at) %>
+          </small>
+        </p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </li>
+</div>
