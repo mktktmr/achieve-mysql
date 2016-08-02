@@ -1,36 +1,65 @@
-# config valid only for current version of Capistrano
+# capistranoのバージョン固定
 lock '3.6.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+# デプロイするアプリケーション名
+set :application, 'achieve'
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# cloneするgitのレポジトリ
+set :repo_url, 'git@github.com:mktktmr/achieve.git'
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+# deployするブランチ。デフォルトはmasterなのでなくても可。
+set :branch, 'master'
 
-# Default value for :scm is :git
-# set :scm, :git
+# deploy先のディレクトリ。
+set :deploy_to, '/var/www/achieve'
 
-# Default value for :format is :airbrussh.
-# set :format, :airbrussh
+# シンボリックリンクをはるファイル。(※後述)
+set :linked_files, fetch(:linked_files, []).push('.env', 'config/secrets.yml')
 
-# You can configure the Airbrussh format using :format_options.
-# These are the defaults.
-# set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+# シンボリックリンクをはるフォルダ。(※後述)
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
-# Default value for :pty is false
-# set :pty, true
+# 保持するバージョンの個数(※後述)
+set :keep_releases, 5
 
-# Default value for :linked_files is []
-# append :linked_files, 'config/database.yml', 'config/secrets.yml'
+# rubyのバージョン
+set :rbenv_ruby, '2.3.0'
 
-# Default value for linked_dirs is []
-# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
+#出力するログのレベル。
+set :log_level, :debug
 
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    invoke 'unicorn:restart'
+  end
 
-# Default value for keep_releases is 5
-# set :keep_releases, 5
+  desc 'Create database'
+  task :db_create do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:create'
+        end
+      end
+    end
+  end
+
+  desc 'Run seed'
+  task :seed do
+    on roles(:app) do
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
+end

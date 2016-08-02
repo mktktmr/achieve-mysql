@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = '-chieve-production
+      config.fog_directory = 'mktktmr-achieve-production'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/mktktmr-achieve-production'
     when 'development'
       config.fog_directory = 'mktktmr-achieve-development'
