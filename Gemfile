@@ -80,3 +80,7 @@ group :development, :test do
   ### 環境変数の設定
   gem 'dotenv-rails'
 end
+
+group :production, :staging do
+  gem 'unicorn'
+end
