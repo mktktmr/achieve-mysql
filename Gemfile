@@ -82,5 +82,9 @@ group :development, :test do
 end
 
 group :production, :staging do
+  ### 
   gem 'unicorn'
 end
+
+### クラウドサービスライブラリ
+gem 'fog'
