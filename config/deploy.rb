@@ -5,7 +5,7 @@ lock '3.6.0'
 set :application, 'achieve'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@github.com:mktktmr/achieve.git'
+set :repo_url, 'https://github.com/mktktmr/achieve-mysql.git'
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
@@ -23,7 +23,10 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :keep_releases, 5
 
 # rubyのバージョン
-set :rbenv_ruby, '2.3.0'
+set :rbenv_ruby, '2.2.5'
+
+# rbenv
+set :rbenv_path, '/usr/local/rbenv'
 
 #出力するログのレベル。
 set :log_level, :debug
