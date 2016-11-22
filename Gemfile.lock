@@ -471,7 +471,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   letter_opener
-  mysql2
+  mysql2 (~> 0.3)
   omniauth
   omniauth-facebook
   omniauth-twitter
