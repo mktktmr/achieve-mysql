@@ -40,7 +40,7 @@ gem 'twitter-bootstrap-rails'
 ### 
 gem 'jquery-turbolinks'
 ### Heroku上でのロギングに必要
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 ### ログイン機能
 gem 'devise'
 ### ダミーデータの作成
